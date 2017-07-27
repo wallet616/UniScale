@@ -12,30 +12,42 @@ $screen-l-min: 1024px;
 $screen-xl-min: 1440px;
 /////////////////////////////////////////////////////
 // Colors:
-// Fonts and hover
+// Fonts 
 $font-primary: rgb(60, 60, 60);
 $font-secondary: rgb(10, 10, 10);
-$hover-multiplier: 1.1;
 // Backgrounds
 $bg-primary: rgb(255, 255, 255);
 $bg-secondary: rgb(210, 210, 210);
-$bg-inverse-primary: rgb(50, 50, 50);
-$bg-inverse-secondary: rgb(30, 30, 30);
-$bg-info: rgb(0, 100, 255);
-$bg-succes: rgb(0, 219, 65);
-$bg-warning: rgb(252, 236, 0);
-$bg-danger: rgb(226, 0, 49);
-$bg-opacity: 0.2;
+// Info, Succes, Warning, Danger, Default - buttons, alerts, inputs
+$forms-font-size: 0.65em;
+$color-default: rgb(10, 10, 10);
+$color-info: rgb(0, 100, 255);
+$color-succes: rgb(0, 219, 65);
+$color-warning: rgb(252, 136, 10);
+$color-danger: rgb(226, 0, 49);
+$color-bg-opacity: 0.1;
+$color-mix: rgb(255, 255, 255);
+// Hovers
+$hover-font-multiplier: 1.1;
+$hover-bg-opacity: 0.12;
 /////////////////////////////////////////////////////
 // Default page values:
 @import url('https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i&subset=latin-ext');
-html,
+* {
+    box-sizing: border-box;
+}
+
+html {
+    min-height: 100%;
+    margin: 0px;
+    padding: 0px;
+}
+
 body {
     /////////////////////////////////////////////////////
     // Base values
     width: 100%;
     overflow-x: hidden;
-    min-height: 100%;
     margin: 0px;
     padding: 0px;
     background-color: $bg-primary;
@@ -81,7 +93,7 @@ a {
     }
     &:hover,
     &:active {
-        color: $font-secondary * $hover-multiplier;
+        color: $font-secondary * $hover-font-multiplier;
     }
 }
 
@@ -285,64 +297,116 @@ h6,
 }
 
 /////////////////////////////////////////////////////////
-// Forms:
+// Buttons:
 .btn {
     cursor: pointer;
     display: inline-block;
-    color: $font-primary;
-    font-size: 1em;
-    padding: 0.2em 1em;
-    border: 1px solid $font-primary;
-    background-color: rgba($bg-primary, $bg-opacity);
-    transition: all 0.2s;
+    font-size: $forms-font-size;
+    padding: 0.4em 1.7em 0.3em 1.7em;
     text-transform: uppercase;
+    text-align: center;
+    position: relative;
+    background: rgba($color-default, $color-bg-opacity);
+    border: 1px solid mix($color-default, $color-mix, 70);
+    text-shadow: none;
+    overflow: hidden;
+    color: mix($color-default, $color-mix, 70);
+    &::before {
+        content: "";
+        position: absolute;
+        transition: border 0.2s;
+        z-index: -1;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        border: 0px solid mix($color-default, $color-mix, 70);
+    }
     &:active,
-    &:hover {
-        color: $font-secondary;
-        box-shadow: inset 0em 0em 1em rgba($font-primary, 0.4);
+    &:hover::before {
+        border-width: 3px;
     }
     &:focus {
         outline: none;
-        box-shadow: 0em 0em 1em rgba($font-secondary, 0.3);
+        box-shadow: 0em 0em 1em rgba($color-default, 0.3);
     }
+    // Info
     &.btn-info {
-        color: mix($font-secondary, $bg-info, 50);
-        background-color: rgba($bg-info, $bg-opacity);
-        border: 1px solid $bg-info;
-        &:active,
-        &:hover {
-            color: mix($font-secondary, $bg-info, 60);
-            box-shadow: inset 0em 0em 1em rgba($bg-info, 0.4);
+        color: mix($color-info, $color-mix, 70);
+        &::before {
+            background-color: rgba($color-info, $color-bg-opacity);
+        }
+        &::after {
+            border: 1px solid mix($color-info, $color-mix, 70);
         }
     }
+    // Succes
     &.btn-succes {
-        color: mix($font-secondary, $bg-succes, 50);
-        background-color: rgba($bg-succes, $bg-opacity);
-        border: 1px solid $bg-succes;
-        &:active,
-        &:hover {
-            color: mix($font-secondary, $bg-succes, 60);
-            box-shadow: inset 0em 0em 1em rgba($bg-succes, 0.4);
+        color: mix($color-succes, $color-mix, 70);
+        &::before {
+            border: 0px solid mix($color-succes, $color-mix, 70);
+        }
+        &::after {
+            border: 1px solid mix($color-succes, $color-mix, 70);
         }
     }
+    // Warning
     &.btn-warning {
-        color: mix($font-secondary, $bg-warning, 50);
-        background-color: rgba($bg-warning, $bg-opacity);
-        border: 1px solid $bg-warning;
-        &:active,
-        &:hover {
-            color: mix($font-secondary, $bg-warning, 60);
-            box-shadow: inset 0em 0em 1em rgba($bg-warning, 0.4);
+        color: mix($color-warning, $color-mix, 70);
+        &::before {
+            background-color: rgba($color-warning, $color-bg-opacity);
+        }
+        &::after {
+            border: 1px solid mix($color-warning, $color-mix, 70);
         }
     }
+    // Danger
     &.btn-danger {
-        color: mix($font-secondary, $bg-danger, 50);
-        background-color: rgba($bg-danger, $bg-opacity);
-        border: 1px solid $bg-danger;
-        &:active,
-        &:hover {
-            color: mix($font-secondary, $bg-danger, 60);
-            box-shadow: inset 0em 0em 1em rgba($bg-danger, 0.4);
+        color: mix($color-danger, $color-mix, 70);
+        &::before {
+            background-color: rgba($color-danger, $color-bg-opacity);
         }
+        &::after {
+            border: 1px solid mix($color-danger, $color-mix, 70);
+        }
+    }
+}
+
+/////////////////////////////////////////////////////////
+// Inputs:
+.input {
+    //cursor: pointer;
+    display: inline-block;
+    width: 100%;
+    font-size: $forms-font-size;
+    padding: 0.4em 0.6em 0.3em 0.6em;
+    position: relative;
+    background: rgba($color-default, 0.05);
+    border: 1px solid mix($color-default, $color-mix, 70);
+    text-shadow: none;
+    color: mix($color-default, $color-mix, 70);
+    &:focus {
+        outline: none;
+        box-shadow: 0em 0em 1em rgba($color-default, 0.3);
+    }
+    // Info
+    &.input-info {
+        background: rgba($color-info, 0.05);
+        border: 1px solid mix($color-info, $color-mix, 70);
+    }
+    // Succes
+    &.input-succes {
+        background: rgba($color-succes, 0.05);
+        border: 1px solid mix($color-succes, $color-mix, 70);
+    }
+    // Warning
+    &.input-warning {
+        background: rgba($color-warning, 0.05);
+        border: 1px solid mix($color-warning, $color-mix, 70);
+    }
+    // Danger
+    &.input-danger {
+        background: rgba($color-danger, 0.05);
+        border: 1px solid mix($color-danger, $color-mix, 70);
     }
 }
