@@ -340,10 +340,10 @@ h6,
   text-transform: uppercase;
   text-align: center;
   position: relative;
-  background: rgba(10, 10, 10, 0.1);
-  border: 1px solid #535353;
   text-shadow: none;
   overflow: hidden;
+  background: rgba(10, 10, 10, 0.1);
+  border: 1px solid #535353;
   color: #535353; }
   .btn::before {
     content: "";
@@ -355,35 +355,43 @@ h6,
     top: 0;
     bottom: 0;
     border: 0px solid #535353; }
-  .btn:active, .btn:hover::before {
+  .btn:active::before, .btn:hover::before {
     border-width: 3px; }
   .btn:focus {
     outline: none;
     box-shadow: 0em 0em 1em rgba(10, 10, 10, 0.3); }
   .btn.btn-info {
-    color: #4c92ff; }
+    color: #4c92ff;
+    background: rgba(0, 100, 255, 0.1);
+    border: 1px solid #4c92ff; }
     .btn.btn-info::before {
-      background-color: rgba(0, 100, 255, 0.1); }
-    .btn.btn-info::after {
-      border: 1px solid #4c92ff; }
+      border: 0px solid #4c92ff; }
+    .btn.btn-info:active::before, .btn.btn-info:hover::before {
+      border-width: 3px; }
   .btn.btn-succes {
-    color: #4ce57a; }
+    color: #4ce57a;
+    background: rgba(0, 219, 65, 0.1);
+    border: 1px solid #4ce57a; }
     .btn.btn-succes::before {
       border: 0px solid #4ce57a; }
-    .btn.btn-succes::after {
-      border: 1px solid #4ce57a; }
+    .btn.btn-succes:active::before, .btn.btn-succes:hover::before {
+      border-width: 3px; }
   .btn.btn-warning {
-    color: #fcab53; }
+    color: #fcab53;
+    background: rgba(252, 136, 10, 0.1);
+    border: 1px solid #fcab53; }
     .btn.btn-warning::before {
-      background-color: rgba(252, 136, 10, 0.1); }
-    .btn.btn-warning::after {
-      border: 1px solid #fcab53; }
+      border: 0px solid #fcab53; }
+    .btn.btn-warning:active::before, .btn.btn-warning:hover::before {
+      border-width: 3px; }
   .btn.btn-danger {
-    color: #ea4c6e; }
+    color: #ea4c6e;
+    background: rgba(226, 0, 49, 0.1);
+    border: 1px solid #ea4c6e; }
     .btn.btn-danger::before {
-      background-color: rgba(226, 0, 49, 0.1); }
-    .btn.btn-danger::after {
-      border: 1px solid #ea4c6e; }
+      border: 0px solid #ea4c6e; }
+    .btn.btn-danger:active::before, .btn.btn-danger:hover::before {
+      border-width: 3px; }
 
 .input {
   display: inline-block;

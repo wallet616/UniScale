@@ -306,10 +306,10 @@ h6,
     text-transform: uppercase;
     text-align: center;
     position: relative;
-    background: rgba($color-default, $color-bg-opacity);
-    border: 1px solid mix($color-default, $color-mix, 70);
     text-shadow: none;
     overflow: hidden;
+    background: rgba($color-default, $color-bg-opacity);
+    border: 1px solid mix($color-default, $color-mix, 70);
     color: mix($color-default, $color-mix, 70);
     &::before {
         content: "";
@@ -322,7 +322,7 @@ h6,
         bottom: 0;
         border: 0px solid mix($color-default, $color-mix, 70);
     }
-    &:active,
+    &:active::before,
     &:hover::before {
         border-width: 3px;
     }
@@ -333,41 +333,53 @@ h6,
     // Info
     &.btn-info {
         color: mix($color-info, $color-mix, 70);
+        background: rgba($color-info, $color-bg-opacity);
+        border: 1px solid mix($color-info, $color-mix, 70);
         &::before {
-            background-color: rgba($color-info, $color-bg-opacity);
+            border: 0px solid mix($color-info, $color-mix, 70);
         }
-        &::after {
-            border: 1px solid mix($color-info, $color-mix, 70);
+        &:active::before,
+        &:hover::before {
+            border-width: 3px;
         }
     }
     // Succes
     &.btn-succes {
         color: mix($color-succes, $color-mix, 70);
+        background: rgba($color-succes, $color-bg-opacity);
+        border: 1px solid mix($color-succes, $color-mix, 70);
         &::before {
             border: 0px solid mix($color-succes, $color-mix, 70);
         }
-        &::after {
-            border: 1px solid mix($color-succes, $color-mix, 70);
+        &:active::before,
+        &:hover::before {
+            border-width: 3px;
         }
     }
     // Warning
     &.btn-warning {
         color: mix($color-warning, $color-mix, 70);
+        background: rgba($color-warning, $color-bg-opacity);
+        border: 1px solid mix($color-warning, $color-mix, 70);
         &::before {
-            background-color: rgba($color-warning, $color-bg-opacity);
+            border: 0px solid mix($color-warning, $color-mix, 70);
         }
-        &::after {
-            border: 1px solid mix($color-warning, $color-mix, 70);
+        &:active::before,
+        &:hover::before {
+            border-width: 3px;
         }
     }
     // Danger
     &.btn-danger {
         color: mix($color-danger, $color-mix, 70);
+        background: rgba($color-danger, $color-bg-opacity);
+        border: 1px solid mix($color-danger, $color-mix, 70);
         &::before {
-            background-color: rgba($color-danger, $color-bg-opacity);
+            border: 0px solid mix($color-danger, $color-mix, 70);
         }
-        &::after {
-            border: 1px solid mix($color-danger, $color-mix, 70);
+        &:active::before,
+        &:hover::before {
+            border-width: 3px;
         }
     }
 }
