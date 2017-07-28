@@ -30,11 +30,14 @@ $color-mix: rgb(255, 255, 255);
 // Hovers
 $hover-font-multiplier: 1.1;
 $hover-bg-opacity: 0.12;
+// Margins
+$margin-bottom-default: 0.3em;
 /////////////////////////////////////////////////////
 // Default page values:
-@import url('https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i&subset=latin-ext');
+@import url('https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i&subset=latin-ext');
 * {
     box-sizing: border-box;
+    vertical-align: top;
 }
 
 html {
@@ -53,7 +56,7 @@ body {
     background-color: $bg-primary;
     /////////////////////////////////////////////////////
     // Text values
-    font-family: "Roboto", sans-serif;
+    font-family: "Lato", sans-serif;
     color: $font-primary;
     //////////////////////////////
     // XS:
@@ -178,7 +181,13 @@ h6,
 .container {
     display: block;
     max-width: $screen-l-min;
-    margin: 0px auto;
+    padding-left: 0.3em;
+    padding-right: 0.3em;
+    margin: 0em auto;
+    @media screen and (min-width: $screen-l-min) {
+        padding-left: 0em;
+        padding-right: 0em;
+    }
 }
 
 .container-fluid {
@@ -297,6 +306,13 @@ h6,
 }
 
 /////////////////////////////////////////////////////////
+// Focus:
+.focus {
+    outline: none;
+    box-shadow: 0em 0em 1em rgba($color-default, 0.3);
+}
+
+/////////////////////////////////////////////////////////
 // Buttons:
 .btn {
     cursor: pointer;
@@ -311,6 +327,7 @@ h6,
     background: rgba($color-default, $color-bg-opacity);
     border: 1px solid mix($color-default, $color-mix, 70);
     color: mix($color-default, $color-mix, 70);
+    margin-bottom: $margin-bottom-default;
     &::before {
         content: "";
         position: absolute;
@@ -327,8 +344,7 @@ h6,
         border-width: 3px;
     }
     &:focus {
-        outline: none;
-        box-shadow: 0em 0em 1em rgba($color-default, 0.3);
+        @extend .focus;
     }
     // Info
     &.btn-info {
@@ -387,7 +403,6 @@ h6,
 /////////////////////////////////////////////////////////
 // Inputs:
 .input {
-    //cursor: pointer;
     display: inline-block;
     width: 100%;
     font-size: $forms-font-size;
@@ -397,9 +412,9 @@ h6,
     border: 1px solid mix($color-default, $color-mix, 70);
     text-shadow: none;
     color: mix($color-default, $color-mix, 70);
+    margin-bottom: $margin-bottom-default;
     &:focus {
-        outline: none;
-        box-shadow: 0em 0em 1em rgba($color-default, 0.3);
+        @extend .focus;
     }
     // Info
     &.input-info {
@@ -420,5 +435,47 @@ h6,
     &.input-danger {
         background: rgba($color-danger, 0.05);
         border: 1px solid mix($color-danger, $color-mix, 70);
+    }
+}
+
+.input-addon {
+    display: inline-block;
+    width: 100%;
+    font-size: $forms-font-size;
+    padding: 0.35em 0.6em 0.3em 0.6em;
+    position: relative;
+    overflow: hidden;
+    background: rgba($color-default, $color-bg-opacity);
+    border: 1px solid mix($color-default, $color-mix, 70);
+    border-right: none;
+    color: mix($color-default, $color-mix, 70);
+    margin-bottom: $margin-bottom-default;
+    // Info
+    &.input-addon-info {
+        color: mix($color-info, $color-mix, 70);
+        background: rgba($color-info, $color-bg-opacity);
+        border: 1px solid mix($color-info, $color-mix, 70);
+        border-right: none;
+    }
+    // Succes
+    &.input-addon-succes {
+        color: mix($color-succes, $color-mix, 70);
+        background: rgba($color-succes, $color-bg-opacity);
+        border: 1px solid mix($color-succes, $color-mix, 70);
+        border-right: none;
+    }
+    // Warning
+    &.input-addon-warning {
+        color: mix($color-warning, $color-mix, 70);
+        background: rgba($color-warning, $color-bg-opacity);
+        border: 1px solid mix($color-warning, $color-mix, 70);
+        border-right: none;
+    }
+    // Danger
+    &.input-addon-danger {
+        color: mix($color-danger, $color-mix, 70);
+        background: rgba($color-danger, $color-bg-opacity);
+        border: 1px solid mix($color-danger, $color-mix, 70);
+        border-right: none;
     }
 }
