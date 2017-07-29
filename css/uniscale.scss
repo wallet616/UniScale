@@ -22,7 +22,7 @@ $bg-secondary: rgb(210, 210, 210);
 $forms-font-size: 0.65em;
 $color-default: rgb(10, 10, 10);
 $color-info: rgb(0, 100, 255);
-$color-succes: rgb(0, 219, 65);
+$color-succes: rgb(20, 180, 95);
 $color-warning: rgb(252, 136, 10);
 $color-danger: rgb(226, 0, 49);
 $color-mix: rgb(255, 255, 255);
@@ -190,10 +190,6 @@ h6,
     padding-left: 0.3em;
     padding-right: 0.3em;
     margin: 0em auto;
-    @media screen and (min-width: $screen-l-min) {
-        padding-left: 0em;
-        padding-right: 0em;
-    }
 }
 
 .container-fluid {
@@ -211,7 +207,6 @@ h6,
     // Col default:
     @mixin col-default {
         display: block;
-        align-items: stretch;
     }
     //////////////////////////////
     // XS:
@@ -316,8 +311,8 @@ h6,
 }
 
 /////////////////////////////////////////////////////////
-// Warp to bottom:
-.warp {
+// Wrap to bottom:
+.wrap {
     &.bottom {
         position: absolute;
         bottom: 0em;
@@ -342,7 +337,7 @@ h6,
     text-align: center;
     position: relative;
     text-shadow: none;
-    overflow: hidden;
+    //overflow: hidden;
     background: rgba($color-default, $color-bg-opacity);
     border: 1px solid mix($color-default, $color-mix, 70);
     color: mix($color-default, $color-mix, 70);
@@ -496,5 +491,27 @@ h6,
         background: rgba($color-danger, $color-bg-opacity);
         border: 1px solid mix($color-danger, $color-mix, 70);
         border-right: none;
+    }
+    // In middle
+    &.input-addon-middle {
+        border-left: none;
+    }
+}
+
+/////////////////////////////////////////////////////////
+// Tooltips:
+*[data-tooltip]:hover {
+    &::after {
+        content: attr(data-tooltip);
+        position: absolute;
+        text-transform: none;
+        bottom: 120%;
+        left: calc(50% - 7.5em);
+        padding: 0.5em;
+        width: 15em;
+        background-color: rgba(0, 0, 0, 0.9);
+        color: rgb(210, 210, 210);
+        text-align: center;
+        font-size: 0.8em;
     }
 }
