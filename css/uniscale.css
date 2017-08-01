@@ -150,10 +150,7 @@ h6,
     .row .col-xl-1.flex,
     .flex .col-xl-1.row,
     .row .col-xl-1.row {
-      display: flex;
-      flex-flow: row wrap;
-      justify-content: space-around;
-      align-items: flex-start; }
+      display: flex; }
   .flex .col-xs-1, .row .col-xs-1 {
     flex-basis: 8.33333%; }
   @media screen and (min-width: 375px) {
@@ -195,10 +192,7 @@ h6,
     .row .col-xl-2.flex,
     .flex .col-xl-2.row,
     .row .col-xl-2.row {
-      display: flex;
-      flex-flow: row wrap;
-      justify-content: space-around;
-      align-items: flex-start; }
+      display: flex; }
   .flex .col-xs-2, .row .col-xs-2 {
     flex-basis: 16.66667%; }
   @media screen and (min-width: 375px) {
@@ -240,10 +234,7 @@ h6,
     .row .col-xl-3.flex,
     .flex .col-xl-3.row,
     .row .col-xl-3.row {
-      display: flex;
-      flex-flow: row wrap;
-      justify-content: space-around;
-      align-items: flex-start; }
+      display: flex; }
   .flex .col-xs-3, .row .col-xs-3 {
     flex-basis: 25%; }
   @media screen and (min-width: 375px) {
@@ -285,10 +276,7 @@ h6,
     .row .col-xl-4.flex,
     .flex .col-xl-4.row,
     .row .col-xl-4.row {
-      display: flex;
-      flex-flow: row wrap;
-      justify-content: space-around;
-      align-items: flex-start; }
+      display: flex; }
   .flex .col-xs-4, .row .col-xs-4 {
     flex-basis: 33.33333%; }
   @media screen and (min-width: 375px) {
@@ -330,10 +318,7 @@ h6,
     .row .col-xl-5.flex,
     .flex .col-xl-5.row,
     .row .col-xl-5.row {
-      display: flex;
-      flex-flow: row wrap;
-      justify-content: space-around;
-      align-items: flex-start; }
+      display: flex; }
   .flex .col-xs-5, .row .col-xs-5 {
     flex-basis: 41.66667%; }
   @media screen and (min-width: 375px) {
@@ -375,10 +360,7 @@ h6,
     .row .col-xl-6.flex,
     .flex .col-xl-6.row,
     .row .col-xl-6.row {
-      display: flex;
-      flex-flow: row wrap;
-      justify-content: space-around;
-      align-items: flex-start; }
+      display: flex; }
   .flex .col-xs-6, .row .col-xs-6 {
     flex-basis: 50%; }
   @media screen and (min-width: 375px) {
@@ -420,10 +402,7 @@ h6,
     .row .col-xl-7.flex,
     .flex .col-xl-7.row,
     .row .col-xl-7.row {
-      display: flex;
-      flex-flow: row wrap;
-      justify-content: space-around;
-      align-items: flex-start; }
+      display: flex; }
   .flex .col-xs-7, .row .col-xs-7 {
     flex-basis: 58.33333%; }
   @media screen and (min-width: 375px) {
@@ -465,10 +444,7 @@ h6,
     .row .col-xl-8.flex,
     .flex .col-xl-8.row,
     .row .col-xl-8.row {
-      display: flex;
-      flex-flow: row wrap;
-      justify-content: space-around;
-      align-items: flex-start; }
+      display: flex; }
   .flex .col-xs-8, .row .col-xs-8 {
     flex-basis: 66.66667%; }
   @media screen and (min-width: 375px) {
@@ -510,10 +486,7 @@ h6,
     .row .col-xl-9.flex,
     .flex .col-xl-9.row,
     .row .col-xl-9.row {
-      display: flex;
-      flex-flow: row wrap;
-      justify-content: space-around;
-      align-items: flex-start; }
+      display: flex; }
   .flex .col-xs-9, .row .col-xs-9 {
     flex-basis: 75%; }
   @media screen and (min-width: 375px) {
@@ -555,10 +528,7 @@ h6,
     .row .col-xl-10.flex,
     .flex .col-xl-10.row,
     .row .col-xl-10.row {
-      display: flex;
-      flex-flow: row wrap;
-      justify-content: space-around;
-      align-items: flex-start; }
+      display: flex; }
   .flex .col-xs-10, .row .col-xs-10 {
     flex-basis: 83.33333%; }
   @media screen and (min-width: 375px) {
@@ -600,10 +570,7 @@ h6,
     .row .col-xl-11.flex,
     .flex .col-xl-11.row,
     .row .col-xl-11.row {
-      display: flex;
-      flex-flow: row wrap;
-      justify-content: space-around;
-      align-items: flex-start; }
+      display: flex; }
   .flex .col-xs-11, .row .col-xs-11 {
     flex-basis: 91.66667%; }
   @media screen and (min-width: 375px) {
@@ -645,10 +612,7 @@ h6,
     .row .col-xl-12.flex,
     .flex .col-xl-12.row,
     .row .col-xl-12.row {
-      display: flex;
-      flex-flow: row wrap;
-      justify-content: space-around;
-      align-items: flex-start; }
+      display: flex; }
   .flex .col-xs-12, .row .col-xs-12 {
     flex-basis: 100%; }
   @media screen and (min-width: 375px) {

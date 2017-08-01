@@ -198,13 +198,10 @@ h6,
 }
 
 .flex {
-    @mixin flex {
-        display: flex;
-        flex-flow: row wrap;
-        justify-content: space-around;
-        align-items: flex-start;
-    }
-    @include flex;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+    align-items: flex-start;
     @for $i from 1 through 12 {
         //////////////////////////////
         // All:
@@ -216,7 +213,8 @@ h6,
             display: block;
             // In case of flex
             &.flex {
-                @include flex;
+                display: flex;
+                // Not using @include flex; bacause its going to be inherited anyway.
             }
         }
         //////////////////////////////
