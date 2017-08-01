@@ -198,15 +198,22 @@ h6,
 }
 
 .row {
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: space-around;
-    align-items: flex-start;
+    @mixin flex {
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: space-around;
+        align-items: flex-start;
+    }
+    @include flex;
     flex-basis: 100%;
     //////////////////////////////
     // Col default:
     @mixin col-default {
         display: block;
+        // In case of flex
+        &.flex {
+            @include flex;
+        }
     }
     //////////////////////////////
     // XS:
@@ -295,17 +302,23 @@ h6,
     //////////////////////////////
     // Sizing class for col:
     .col-size-min {
+        @include col-default;
         flex-grow: 0;
     }
     .col-size-max {
+        @include col-default;
         flex-grow: 1;
     }
     .col-push-auto {
+        @include col-default;
         flex-grow: initial;
     }
     //////////////////////////////
     // Stick together:
     .nowrap {
+        flex-wrap: nowrap;
+    }
+    .wrap {
         flex-wrap: nowrap;
     }
 }
@@ -500,18 +513,44 @@ h6,
 
 /////////////////////////////////////////////////////////
 // Tooltips:
-*[data-tooltip]:hover {
-    &::after {
-        content: attr(data-tooltip);
+*[data-toogle="tooltip"] {
+    &>.tooltip {
+        opacity: 0;
+        display: block;
         position: absolute;
+        z-index: 100;
         text-transform: none;
-        bottom: 120%;
-        left: calc(50% - 7.5em);
+        bottom: calc(100% + 1.5em);
+        left: calc(50% - 7.5em); // 50% - half_of_width
         padding: 0.5em;
         width: 15em;
         background-color: rgba(0, 0, 0, 0.9);
         color: rgb(210, 210, 210);
         text-align: center;
         font-size: 0.8em;
+        transform: scale(0.0, 0.0);
+        transition: transform 0.15s;
+        &::after {
+            content: "";
+            position: absolute;
+            bottom: -1em;
+            left: calc(50% - 0.5em);
+            width: 0em;
+            height: 0em;
+            margin-top: -0.5em;
+            border: 0.5em solid transparent;
+            border-top-color: rgba(0, 0, 0, 0.9);
+        }
+    }
+    &:hover {
+        &>.tooltip {
+            opacity: 1;
+            transform: scale(1.0, 1.0);
+            // Do not let hover a tooltip
+            &:hover {
+                opacity: 0;
+                transform: scale(0.0, 0.0);
+            }
+        }
     }
 }
