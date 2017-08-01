@@ -197,7 +197,7 @@ h6,
     min-width: 100%;
 }
 
-.row {
+.flex {
     @mixin flex {
         display: flex;
         flex-flow: row wrap;
@@ -205,60 +205,50 @@ h6,
         align-items: flex-start;
     }
     @include flex;
-    flex-basis: 100%;
-    //////////////////////////////
-    // Col default:
-    @mixin col-default {
-        display: block;
-        // In case of flex
-        &.flex {
-            @include flex;
-        }
-    }
-    //////////////////////////////
-    // XS:
     @for $i from 1 through 12 {
+        //////////////////////////////
+        // All:
+        .col-xs-#{$i},
+        .col-s-#{$i},
+        .col-m-#{$i},
+        .col-l-#{$i},
+        .col-xl-#{$i} {
+            display: block;
+            // In case of flex
+            &.flex {
+                @include flex;
+            }
+        }
+        //////////////////////////////
+        // XS:
         .col-xs-#{$i} {
-            @include col-default;
             flex-basis: #{percentage($i / 12)};
         }
-    }
-    //////////////////////////////
-    // S:
-    @media screen and (min-width: $screen-s-min) {
-        @for $i from 1 through 12 {
+        //////////////////////////////
+        // S:
+        @media screen and (min-width: $screen-s-min) {
             .col-s-#{$i} {
-                @include col-default;
                 flex-basis: #{percentage($i / 12)};
             }
         }
-    }
-    //////////////////////////////
-    // M:
-    @media screen and (min-width: $screen-m-min) {
-        @for $i from 1 through 12 {
+        //////////////////////////////
+        // M:
+        @media screen and (min-width: $screen-m-min) {
             .col-m-#{$i} {
-                @include col-default;
                 flex-basis: #{percentage($i / 12)};
             }
         }
-    }
-    //////////////////////////////
-    // L:
-    @media screen and (min-width: $screen-l-min) {
-        @for $i from 1 through 12 {
+        //////////////////////////////
+        // L:
+        @media screen and (min-width: $screen-l-min) {
             .col-l-#{$i} {
-                @include col-default;
                 flex-basis: #{percentage($i / 12)};
             }
         }
-    }
-    //////////////////////////////
-    // XL:
-    @media screen and (min-width: $screen-xl-min) {
-        @for $i from 1 through 12 {
+        //////////////////////////////
+        // XL:
+        @media screen and (min-width: $screen-xl-min) {
             .col-xl-#{$i} {
-                @include col-default;
                 flex-basis: #{percentage($i / 12)};
             }
         }
@@ -302,15 +292,12 @@ h6,
     //////////////////////////////
     // Sizing class for col:
     .col-size-min {
-        @include col-default;
         flex-grow: 0;
     }
     .col-size-max {
-        @include col-default;
         flex-grow: 1;
     }
     .col-push-auto {
-        @include col-default;
         flex-grow: initial;
     }
     //////////////////////////////
@@ -321,6 +308,11 @@ h6,
     .wrap {
         flex-wrap: nowrap;
     }
+}
+
+.row {
+    @extend .flex;
+    flex-basis: 100%;
 }
 
 /////////////////////////////////////////////////////////
