@@ -26,7 +26,7 @@ $color-succes: rgb(20, 180, 95);
 $color-warning: rgb(252, 136, 10);
 $color-danger: rgb(226, 0, 49);
 $color-mix: rgb(255, 255, 255);
-$color-hover: rgb(255, 255, 255);
+$color-font-hover: rgb(255, 255, 255);
 // Buttons, alerts
 $color-bg-opacity: 0.1;
 // Inputs
@@ -43,8 +43,6 @@ $margin-bottom-default: 0.3em;
     box-sizing: border-box;
     vertical-align: top;
     line-height: 1.15;
-    -ms-text-size-adjust: 100%;
-    -webkit-text-size-adjust: 100%;
 }
 
 html {
@@ -367,7 +365,7 @@ h6,
     }
     &:active,
     &:hover {
-        color: $color-hover;
+        color: $color-font-hover;
         &::before {
             opacity: 1;
             transform: translate3d(0, 0, 0);
@@ -386,7 +384,7 @@ h6,
         }
         &:active,
         &:hover {
-            color: $color-hover;
+            color: $color-font-hover;
         }
     }
     // Succes
@@ -399,7 +397,7 @@ h6,
         }
         &:active,
         &:hover {
-            color: $color-hover;
+            color: $color-font-hover;
         }
     }
     // Warning
@@ -412,7 +410,7 @@ h6,
         }
         &:active,
         &:hover {
-            color: $color-hover;
+            color: $color-font-hover;
         }
     }
     // Danger
@@ -425,7 +423,7 @@ h6,
         }
         &:active,
         &:hover {
-            color: $color-hover;
+            color: $color-font-hover;
         }
     }
 }

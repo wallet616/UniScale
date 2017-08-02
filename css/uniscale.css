@@ -2,9 +2,7 @@
 * {
   box-sizing: border-box;
   vertical-align: top;
-  line-height: 1.15;
-  -ms-text-size-adjust: 100%;
-  -webkit-text-size-adjust: 100%; }
+  line-height: 1.15; }
 
 html {
   min-height: 100%;
