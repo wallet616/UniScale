@@ -627,6 +627,25 @@ h6,
   @media screen and (min-width: 1440px) {
     .flex .col-xl-12, .row .col-xl-12 {
       flex-basis: 100%; } }
+  .flex .col-min, .row .col-min {
+    display: block;
+    flex-grow: 0; }
+    .flex .col-min.flex, .row .col-min.flex, .flex .col-min.row, .row .col-min.row {
+      display: flex; }
+  .flex .col-max, .row .col-max {
+    display: block;
+    flex-grow: 1; }
+    .flex .col-max.flex, .row .col-max.flex, .flex .col-max.row, .row .col-max.row {
+      display: flex; }
+  .flex .col-auto, .row .col-auto {
+    display: block;
+    flex-grow: initial; }
+    .flex .col-auto.flex, .row .col-auto.flex, .flex .col-auto.row, .row .col-auto.row {
+      display: flex; }
+  .flex .nowrap, .row .nowrap {
+    flex-wrap: nowrap; }
+  .flex .wrap, .row .wrap {
+    flex-wrap: nowrap; }
   .flex.center, .center.row {
     justify-content: space-around; }
   .flex.left, .left.row {
@@ -647,16 +666,6 @@ h6,
     align-self: flex-start; }
   .flex .col-push-bottom, .row .col-push-bottom {
     align-self: flex-end; }
-  .flex .col-size-min, .row .col-size-min {
-    flex-grow: 0; }
-  .flex .col-size-max, .row .col-size-max {
-    flex-grow: 1; }
-  .flex .col-push-auto, .row .col-push-auto {
-    flex-grow: initial; }
-  .flex .nowrap, .row .nowrap {
-    flex-wrap: nowrap; }
-  .flex .wrap, .row .wrap {
-    flex-wrap: nowrap; }
 
 .row {
   flex-basis: 100%; }
@@ -667,7 +676,7 @@ h6,
 
 .focus, .btn:focus, .input:focus {
   outline: none;
-  box-shadow: 0em 0em 1em rgba(10, 10, 10, 0.3); }
+  box-shadow: 0em 0em 1em rgba(10, 10, 10, 0.4); }
 
 .btn {
   cursor: pointer;
@@ -681,51 +690,58 @@ h6,
   background: rgba(10, 10, 10, 0.1);
   border: 1px solid #535353;
   color: #535353;
-  margin-bottom: 0.3em; }
+  margin-bottom: 0.3em;
+  transition: color 0.4s; }
   .btn::before {
     content: "";
     position: absolute;
-    transition: border 0.2s;
-    z-index: -1;
-    left: 0;
-    right: 0;
     top: 0;
-    bottom: 0;
-    border: 0px solid #535353; }
-  .btn:active::before, .btn:hover::before {
-    border-width: 3px; }
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #535353;
+    z-index: -1;
+    opacity: 0;
+    transform: scale3d(0.7, 1, 1);
+    transition: transform 0.4s, opacity 0.4s;
+    transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1); }
+  .btn:active, .btn:hover {
+    color: white; }
+    .btn:active::before, .btn:hover::before {
+      opacity: 1;
+      transform: translate3d(0, 0, 0); }
   .btn.btn-info {
     color: #4c92ff;
     background: rgba(0, 100, 255, 0.1);
     border: 1px solid #4c92ff; }
     .btn.btn-info::before {
-      border: 0px solid #4c92ff; }
-    .btn.btn-info:active::before, .btn.btn-info:hover::before {
-      border-width: 3px; }
+      background: #4c92ff; }
+    .btn.btn-info:active, .btn.btn-info:hover {
+      color: white; }
   .btn.btn-succes {
     color: #5aca8f;
     background: rgba(20, 180, 95, 0.1);
     border: 1px solid #5aca8f; }
     .btn.btn-succes::before {
-      border: 0px solid #5aca8f; }
-    .btn.btn-succes:active::before, .btn.btn-succes:hover::before {
-      border-width: 3px; }
+      background: #5aca8f; }
+    .btn.btn-succes:active, .btn.btn-succes:hover {
+      color: white; }
   .btn.btn-warning {
     color: #fcab53;
     background: rgba(252, 136, 10, 0.1);
     border: 1px solid #fcab53; }
     .btn.btn-warning::before {
-      border: 0px solid #fcab53; }
-    .btn.btn-warning:active::before, .btn.btn-warning:hover::before {
-      border-width: 3px; }
+      background: #fcab53; }
+    .btn.btn-warning:active, .btn.btn-warning:hover {
+      color: white; }
   .btn.btn-danger {
     color: #ea4c6e;
     background: rgba(226, 0, 49, 0.1);
     border: 1px solid #ea4c6e; }
     .btn.btn-danger::before {
-      border: 0px solid #ea4c6e; }
-    .btn.btn-danger:active::before, .btn.btn-danger:hover::before {
-      border-width: 3px; }
+      background: #ea4c6e; }
+    .btn.btn-danger:active, .btn.btn-danger:hover {
+      color: white; }
 
 .input {
   display: inline-block;
@@ -812,6 +828,12 @@ h6,
     margin-top: -0.5em;
     border: 0.5em solid transparent;
     border-top-color: rgba(0, 0, 0, 0.9); }
+  *[data-toogle="tooltip"] > .tooltip.small {
+    left: calc(50% - 4em);
+    width: 8em; }
+  *[data-toogle="tooltip"] > .tooltip.large {
+    left: calc(50% - 12.5em);
+    width: 25em; }
 *[data-toogle="tooltip"]:hover > .tooltip {
   opacity: 1;
   transform: scale(1, 1); }

@@ -26,6 +26,7 @@ $color-succes: rgb(20, 180, 95);
 $color-warning: rgb(252, 136, 10);
 $color-danger: rgb(226, 0, 49);
 $color-mix: rgb(255, 255, 255);
+$color-hover: rgb(255, 255, 255);
 // Buttons, alerts
 $color-bg-opacity: 0.1;
 // Inputs
@@ -37,7 +38,7 @@ $hover-bg-opacity: 0.12;
 $margin-bottom-default: 0.3em;
 /////////////////////////////////////////////////////
 // Default page values:
-@import url('https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i&subset=latin-ext');
+@import url("https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i&subset=latin-ext");
 * {
     box-sizing: border-box;
     vertical-align: top;
@@ -202,6 +203,13 @@ h6,
     flex-flow: row wrap;
     justify-content: space-around;
     align-items: flex-start;
+    @mixin col-default {
+        display: block;
+        // In case of flex
+        &.flex {
+            display: flex;
+        }
+    }
     @for $i from 1 through 12 {
         //////////////////////////////
         // All:
@@ -210,12 +218,7 @@ h6,
         .col-m-#{$i},
         .col-l-#{$i},
         .col-xl-#{$i} {
-            display: block;
-            // In case of flex
-            &.flex {
-                display: flex;
-                // Not using @include flex; bacause its going to be inherited anyway.
-            }
+            @include col-default;
         }
         //////////////////////////////
         // XS:
@@ -250,6 +253,28 @@ h6,
                 flex-basis: #{percentage($i / 12)};
             }
         }
+    }
+    //////////////////////////////
+    // Sizing class for col:
+    .col-min {
+        @include col-default;
+        flex-grow: 0;
+    }
+    .col-max {
+        @include col-default;
+        flex-grow: 1;
+    }
+    .col-auto {
+        @include col-default;
+        flex-grow: initial;
+    }
+    //////////////////////////////
+    // Stick together:
+    .nowrap {
+        flex-wrap: nowrap;
+    }
+    .wrap {
+        flex-wrap: nowrap;
     }
     //////////////////////////////
     // Horizontal class for row:
@@ -287,25 +312,6 @@ h6,
     .col-push-bottom {
         align-self: flex-end;
     }
-    //////////////////////////////
-    // Sizing class for col:
-    .col-size-min {
-        flex-grow: 0;
-    }
-    .col-size-max {
-        flex-grow: 1;
-    }
-    .col-push-auto {
-        flex-grow: initial;
-    }
-    //////////////////////////////
-    // Stick together:
-    .nowrap {
-        flex-wrap: nowrap;
-    }
-    .wrap {
-        flex-wrap: nowrap;
-    }
 }
 
 .row {
@@ -326,7 +332,7 @@ h6,
 // Focus:
 .focus {
     outline: none;
-    box-shadow: 0em 0em 1em rgba($color-default, 0.3);
+    box-shadow: 0em 0em 1em rgba($color-default, 0.4);
 }
 
 /////////////////////////////////////////////////////////
@@ -340,25 +346,32 @@ h6,
     text-align: center;
     position: relative;
     text-shadow: none;
-    //overflow: hidden;
     background: rgba($color-default, $color-bg-opacity);
     border: 1px solid mix($color-default, $color-mix, 70);
     color: mix($color-default, $color-mix, 70);
     margin-bottom: $margin-bottom-default;
+    transition: color 0.4s;
     &::before {
         content: "";
         position: absolute;
-        transition: border 0.2s;
-        z-index: -1;
-        left: 0;
-        right: 0;
         top: 0;
-        bottom: 0;
-        border: 0px solid mix($color-default, $color-mix, 70);
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: mix($color-default, $color-mix, 70);
+        z-index: -1;
+        opacity: 0;
+        transform: scale3d(0.7, 1, 1);
+        transition: transform 0.4s, opacity 0.4s;
+        transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
     }
-    &:active::before,
-    &:hover::before {
-        border-width: 3px;
+    &:active,
+    &:hover {
+        color: $color-hover;
+        &::before {
+            opacity: 1;
+            transform: translate3d(0, 0, 0);
+        }
     }
     &:focus {
         @extend .focus;
@@ -369,11 +382,11 @@ h6,
         background: rgba($color-info, $color-bg-opacity);
         border: 1px solid mix($color-info, $color-mix, 70);
         &::before {
-            border: 0px solid mix($color-info, $color-mix, 70);
+            background: mix($color-info, $color-mix, 70);
         }
-        &:active::before,
-        &:hover::before {
-            border-width: 3px;
+        &:active,
+        &:hover {
+            color: $color-hover;
         }
     }
     // Succes
@@ -382,11 +395,11 @@ h6,
         background: rgba($color-succes, $color-bg-opacity);
         border: 1px solid mix($color-succes, $color-mix, 70);
         &::before {
-            border: 0px solid mix($color-succes, $color-mix, 70);
+            background: mix($color-succes, $color-mix, 70);
         }
-        &:active::before,
-        &:hover::before {
-            border-width: 3px;
+        &:active,
+        &:hover {
+            color: $color-hover;
         }
     }
     // Warning
@@ -395,11 +408,11 @@ h6,
         background: rgba($color-warning, $color-bg-opacity);
         border: 1px solid mix($color-warning, $color-mix, 70);
         &::before {
-            border: 0px solid mix($color-warning, $color-mix, 70);
+            background: mix($color-warning, $color-mix, 70);
         }
-        &:active::before,
-        &:hover::before {
-            border-width: 3px;
+        &:active,
+        &:hover {
+            color: $color-hover;
         }
     }
     // Danger
@@ -408,11 +421,11 @@ h6,
         background: rgba($color-danger, $color-bg-opacity);
         border: 1px solid mix($color-danger, $color-mix, 70);
         &::before {
-            border: 0px solid mix($color-danger, $color-mix, 70);
+            background: mix($color-danger, $color-mix, 70);
         }
-        &:active::before,
-        &:hover::before {
-            border-width: 3px;
+        &:active,
+        &:hover {
+            color: $color-hover;
         }
     }
 }
@@ -530,6 +543,14 @@ h6,
             margin-top: -0.5em;
             border: 0.5em solid transparent;
             border-top-color: rgba(0, 0, 0, 0.9);
+        }
+        &.small {
+            left: calc(50% - 4em); // 50% - half_of_width
+            width: 8em;
+        }
+        &.large {
+            left: calc(50% - 12.5em); // 50% - half_of_width
+            width: 25em;
         }
     }
     &:hover {
