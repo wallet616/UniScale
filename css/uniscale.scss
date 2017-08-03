@@ -15,9 +15,13 @@ $screen-xl-min: 1440px;
 // Fonts 
 $font-primary: rgb(60, 60, 60);
 $font-secondary: rgb(10, 10, 10);
+// Links
+$link-primary: rgb(10, 10, 10);
+$link-hover:rgb(255, 255, 255);
+$link-underline: rgb(150, 150, 150);
 // Backgrounds
 $bg-primary: rgb(255, 255, 255);
-$bg-secondary: rgb(210, 210, 210);
+$bg-secondary: rgb(230, 230, 230);
 // Info, Succes, Warning, Danger, Default - buttons, alerts, inputs
 $forms-font-size: 0.65em;
 $color-default: rgb(10, 10, 10);
@@ -32,7 +36,6 @@ $color-bg-opacity: 0.1;
 // Inputs
 $color-bg-input-opacity: 0.05;
 // Hovers
-$hover-font-multiplier: 1.1;
 $hover-bg-opacity: 0.12;
 // Margins
 $margin-bottom-default: 0.3em;
@@ -88,28 +91,54 @@ body {
     }
 }
 
+/////////////////////////////////////////////////////////
+// Focus:
+.focus {
+    outline: none;
+    box-shadow: 0em 0em 1em rgba($color-default, 0.4);
+}
+
 /////////////////////////////////////////////////////
 // Default text values:
 a {
-    display: inline-block;
+    color: mix($link-primary, $link-underline, 80);
+    position: relative;
     text-decoration: none;
-    color: $font-secondary;
-    transition: all 0.8s;
+    display: inline-block;
+    padding: 0 1px;
+    transition: color ease 0.3s;
+    &::after {
+        content: '';
+        position: absolute;
+        z-index: -1;
+        width: 100%;
+        height: 0.1em;
+        left: 0;
+        bottom: 0;
+        background-color: mix($link-primary, $link-underline, 20);
+        transition: all ease 0.3s;
+    }
     &:link,
     &:visited {
-        color: $font-secondary;
+        color: mix($link-primary, $link-underline, 80);
     }
-    &:hover,
-    &:active {
-        color: $font-secondary * $hover-font-multiplier;
+    &:active,
+    &:hover {
+        color: $link-hover;
+        &::after {
+            height: 100%;
+        }
     }
 }
 
 p {
     display: block;
-    margin: 0em 0em 1em 0em;
+    margin: 0em 0em 0.4em 0em;
     padding: 0.1em 0.5em;
     font-size: 1em;
+    &:first-child {
+        margin-top: 0.4em;
+    }
 }
 
 b {
@@ -139,6 +168,9 @@ h1,
     padding: 0.1em 0.5em;
     color: $font-secondary;
     font-size: 2.0em;
+    &:first-child {
+        margin-top: 0.6em;
+    }
 }
 
 h2,
@@ -147,6 +179,9 @@ h2,
     padding: 0.1em 0.5em;
     color: $font-secondary;
     font-size: 1.8em;
+    &:first-child {
+        margin-top: 0.5em;
+    }
 }
 
 h3,
@@ -155,6 +190,9 @@ h3,
     padding: 0.1em 0.5em;
     color: $font-secondary;
     font-size: 1.6em;
+    &:first-child {
+        margin-top: 0.4em;
+    }
 }
 
 h4,
@@ -163,6 +201,9 @@ h4,
     padding: 0.1em 0.5em;
     color: $font-secondary;
     font-size: 1.4em;
+    &:first-child {
+        margin-top: 0.3em;
+    }
 }
 
 h5,
@@ -171,6 +212,9 @@ h5,
     padding: 0.1em 0.5em;
     color: $font-secondary;
     font-size: 1.2em;
+    &:first-child {
+        margin-top: 0.5em;
+    }
 }
 
 h6,
@@ -179,6 +223,9 @@ h6,
     padding: 0.1em 0.5em;
     color: $font-secondary;
     font-size: 1.0em;
+    &:first-child {
+        margin-top: 0.1em;
+    }
 }
 
 /////////////////////////////////////////////////////
@@ -310,6 +357,20 @@ h6,
     .col-push-bottom {
         align-self: flex-end;
     }
+    //////////////////////////////
+    // Directions:
+    &.flex-direction-column {
+        flex-direction: column;
+        &.reverse {
+            flex-direction: column-reverse;
+        }
+    }
+    &.flex-direction-row {
+        flex-direction: row;
+        &.reverse {
+            flex-direction: row-reverse;
+        }
+    }
 }
 
 .row {
@@ -327,10 +388,18 @@ h6,
 }
 
 /////////////////////////////////////////////////////////
-// Focus:
-.focus {
-    outline: none;
-    box-shadow: 0em 0em 1em rgba($color-default, 0.4);
+// Panel:
+.panel {
+    position: relative;
+    z-index: 1;
+    background-color: $bg-secondary;
+    border: 1px solid mix($color-default, $color-mix, 70);
+    margin-bottom: 1em;
+}
+
+.panel-borderless {
+    @extend .panel;
+    border: 1px solid transparent;
 }
 
 /////////////////////////////////////////////////////////
@@ -562,4 +631,29 @@ h6,
             }
         }
     }
+}
+
+/////////////////////////////////////////////////////////
+// Margin:
+.m-t {
+    margin-top: 0.5em;
+}
+
+.m-r {
+    margin-right: 0.5em;
+}
+
+.m-l {
+    margin-left: 0.5em;
+}
+
+.m-b {
+    margin-bottom: 0.5em;
+}
+
+.margin {
+    @extend .m-t;
+    @extend .m-r;
+    @extend .m-b;
+    @extend .m-l;
 }
