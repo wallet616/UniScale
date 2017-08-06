@@ -265,34 +265,44 @@ h6,
         .col-xl-#{$i} {
             @include col-default;
         }
-        //////////////////////////////
-        // XS:
+    }
+    //////////////////////////////
+    // XS:
+    @for $i from 1 through 12 {
         .col-xs-#{$i} {
             flex-basis: #{percentage($i / 12)};
         }
-        //////////////////////////////
-        // S:
+    }
+    //////////////////////////////
+    // S:
+    @for $i from 1 through 12 {
         @media screen and (min-width: $screen-s-min) {
             .col-s-#{$i} {
                 flex-basis: #{percentage($i / 12)};
             }
         }
-        //////////////////////////////
-        // M:
+    }
+    //////////////////////////////
+    // M:
+    @for $i from 1 through 12 {
         @media screen and (min-width: $screen-m-min) {
             .col-m-#{$i} {
                 flex-basis: #{percentage($i / 12)};
             }
         }
-        //////////////////////////////
-        // L:
+    }
+    //////////////////////////////
+    // L:
+    @for $i from 1 through 12 {
         @media screen and (min-width: $screen-l-min) {
             .col-l-#{$i} {
                 flex-basis: #{percentage($i / 12)};
             }
         }
-        //////////////////////////////
-        // XL:
+    }
+    //////////////////////////////
+    // XL:
+    @for $i from 1 through 12 {
         @media screen and (min-width: $screen-xl-min) {
             .col-xl-#{$i} {
                 flex-basis: #{percentage($i / 12)};
@@ -363,6 +373,9 @@ h6,
         flex-direction: column;
         &.reverse {
             flex-direction: column-reverse;
+        }
+        &>* {
+            width: 100%;
         }
     }
     &.flex-direction-row {
@@ -656,4 +669,35 @@ h6,
     @extend .m-r;
     @extend .m-b;
     @extend .m-l;
+}
+
+/////////////////////////////////////////////////////////
+// Padding:
+.p-t {
+    padding-top: 0.5em;
+}
+
+.p-r {
+    padding-right: 0.5em;
+}
+
+.p-l {
+    padding-left: 0.5em;
+}
+
+.p-b {
+    padding-bottom: 0.5em;
+}
+
+.padding {
+    @extend .p-t;
+    @extend .p-r;
+    @extend .p-b;
+    @extend .p-l;
+}
+
+/////////////////////////////////////////////////////////
+// 100% height:
+.height-100 {
+    height: 100%;
 }
