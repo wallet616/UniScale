@@ -1,10 +1,19 @@
 @import "./_variables.scss";
 /////////////////////////////////////////////////////////
 // Alerts:
+.alerts-box {
+    position: fixed;
+    z-index: 200;
+    top: 0em;
+    left: 0em;
+    width: 100%;
+    margin-top: 1em;
+}
+
 .alert {
     position: relative;
     z-index: 1;
-    background-color: $bg-secondary;
+    background-color: mix($bg-secondary, $color-mix, 10);
     border: 1px solid mix($color-default, $color-mix, 70);
     margin-bottom: 1em;
     .alert-icon {
@@ -38,25 +47,25 @@
     // Info
     &.alert-info {
         color: mix($color-info, $color-mix, 70);
-        background: rgba($color-info, $color-bg-opacity);
+        background-color: mix($color-info, $color-mix, 10);
         border: 1px solid mix($color-info, $color-mix, 70);
     }
     // Succes
     &.alert-succes {
         color: mix($color-succes, $color-mix, 70);
-        background: rgba($color-succes, $color-bg-opacity);
+        background-color: mix($color-succes, $color-mix, 10);
         border: 1px solid mix($color-succes, $color-mix, 70);
     }
     // Warning
     &.alert-warning {
         color: mix($color-warning, $color-mix, 70);
-        background: rgba($color-warning, $color-bg-opacity);
+        background-color: mix($color-warning, $color-mix, 10);
         border: 1px solid mix($color-warning, $color-mix, 70);
     }
     // Danger
     &.alert-danger {
         color: mix($color-danger, $color-mix, 70);
-        background: rgba($color-danger, $color-bg-opacity);
+        background-color: mix($color-danger, $color-mix, 10);
         border: 1px solid mix($color-danger, $color-mix, 70);
     }
 }
