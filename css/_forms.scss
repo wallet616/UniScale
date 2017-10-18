@@ -150,31 +150,39 @@
         color: mix($color-info, $color-mix, 70);
         background: rgba($color-info, $color-bg-opacity);
         border: 1px solid mix($color-info, $color-mix, 70);
-        border-right: none;
     }
     // Succes
     &.input-addon-succes {
         color: mix($color-succes, $color-mix, 70);
         background: rgba($color-succes, $color-bg-opacity);
         border: 1px solid mix($color-succes, $color-mix, 70);
-        border-right: none;
     }
     // Warning
     &.input-addon-warning {
         color: mix($color-warning, $color-mix, 70);
         background: rgba($color-warning, $color-bg-opacity);
         border: 1px solid mix($color-warning, $color-mix, 70);
-        border-right: none;
     }
     // Danger
     &.input-addon-danger {
         color: mix($color-danger, $color-mix, 70);
         background: rgba($color-danger, $color-bg-opacity);
         border: 1px solid mix($color-danger, $color-mix, 70);
-        border-right: none;
     }
-    // In middle
-    &.input-addon-middle {
-        border-left: none;
+    @each $name,
+    $size in $screen-sizes {
+        // At left
+        &.input-addon-left-#{$name} {
+            border-right: none;
+        }
+        // In middle
+        &.input-addon-middle-#{$name} {
+            border-right: none;
+            border-left: none;
+        }
+        // At right
+        &.input-addon-right-#{$name} {
+            border-left: none;
+        }
     }
 }

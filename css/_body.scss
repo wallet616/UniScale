@@ -28,29 +28,7 @@ body {
     // Text values
     font-family: "Lato", sans-serif;
     color: $font-primary;
-    //////////////////////////////
-    // XS:
-    font-size: 18px;
-    //////////////////////////////
-    // S:
-    @media screen and (min-width: $screen-s-min) {
-        font-size: 19px;
-    }
-    //////////////////////////////
-    // M:
-    @media screen and (min-width: $screen-m-min) {
-        font-size: 20px;
-    }
-    //////////////////////////////
-    // L:
-    @media screen and (min-width: $screen-l-min) {
-        font-size: 21px;
-    }
-    //////////////////////////////
-    // XL:
-    @media screen and (min-width: $screen-xl-min) {
-        font-size: 22px;
-    }
+    font-size: 19px;
 }
 
 /////////////////////////////////////////////////////////
@@ -75,7 +53,7 @@ a {
         position: absolute;
         z-index: -1;
         width: 100%;
-        height: 0.13em;
+        height: 1px;
         left: 0;
         bottom: 0;
         background-color: mix($link-primary, $link-underline, 20);
@@ -132,17 +110,23 @@ $size in $screen-sizes {
 .heading {
     color: $font-secondary;
     font-weight: normal;
-    a::after {
-        display: none;
+    padding: 0.1em 0.5em;
+    a {
+        &::after {
+            display: none;
+        }
+        &:active,
+        &:hover {
+            color: mix($font-secondary, $link-hover, 50);
+        }
     }
 }
 
 h1,
 .h1 {
-    margin: 1em 0em 0.6em 0em;
-    padding: 0.1em 0.5em;
-    font-size: 2.0em;
     @extend .heading;
+    margin: 1em 0em 0.6em 0em;
+    font-size: 2.0em;
     &:first-child {
         margin-top: 0.6em;
     }
@@ -150,10 +134,9 @@ h1,
 
 h2,
 .h2 {
-    margin: 1em 0em 0.5em 0em;
-    padding: 0.1em 0.5em;
-    font-size: 1.8em;
     @extend .heading;
+    margin: 1em 0em 0.5em 0em;
+    font-size: 1.8em;
     &:first-child {
         margin-top: 0.5em;
     }
@@ -162,7 +145,6 @@ h2,
 h3,
 .h3 {
     margin: 1em 0em 0.4em 0em;
-    padding: 0.1em 0.5em;
     font-size: 1.6em;
     @extend .heading;
     &:first-child {
@@ -172,10 +154,9 @@ h3,
 
 h4,
 .h4 {
-    margin: 1em 0em 0.3em 0em;
-    padding: 0.1em 0.5em;
-    font-size: 1.4em;
     @extend .heading;
+    margin: 1em 0em 0.3em 0em;
+    font-size: 1.4em;
     &:first-child {
         margin-top: 0.3em;
     }
@@ -183,10 +164,9 @@ h4,
 
 h5,
 .h5 {
-    margin: 1em 0em 0.2em 0em;
-    padding: 0.1em 0.5em;
-    font-size: 1.2em;
     @extend .heading;
+    margin: 1em 0em 0.2em 0em;
+    font-size: 1.2em;
     &:first-child {
         margin-top: 0.5em;
     }
@@ -194,10 +174,9 @@ h5,
 
 h6,
 .h6 {
-    margin: 1em 0em 0.1em 0em;
-    padding: 0.1em 0.5em;
-    font-size: 1.0em;
     @extend .heading;
+    margin: 1em 0em 0.1em 0em;
+    font-size: 1.0em;
     &:first-child {
         margin-top: 0.1em;
     }
