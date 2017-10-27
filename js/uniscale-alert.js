@@ -49,6 +49,13 @@ var ALERT_PATTERN =
 // Alert class:
 class Alert {
     constructor(id) {
+        ////////////////////////////////////
+        // Check jQuery
+        if (typeof $ !== "function") {
+            console.error("[LoadingAnimation] Error: jQuery is required.");
+            return;
+        }
+
         // Values:
         this.message_duration = 10000;
         this.message_fade_out = 500;
@@ -76,8 +83,10 @@ class Alert {
 
         if (this.class_ready) {
             this.is_initialized = true;
-            console.info("[ALERT] Initialization successful.");
             this.display();
+            console.info("[ALERT] Initialization successful.");
+        } else {
+            console.error("[ALERT] Unable to initialize. Target element was not set during object creation.");
         }
     }
 
@@ -161,6 +170,6 @@ $(document).ready(function() {
     ALERT = new Alert("alerts-hook");
     ALERT.init();
 
-    //ALERT.push(ALERT_TYPE.SUCCESS, "Test", "Message for the alert.");
-    //ALERT.push(ALERT_TYPE.DANGER, "T asdfad est", "Message for thfasd e alert.");
+    //ALERT.push(ALERT_TYPE.SUCCESS, "Excellent!", "Message for the alert.");
+    //ALERT.push(ALERT_TYPE.DANGER, "Something is wrong!", "Unable to do someting important.");
 });

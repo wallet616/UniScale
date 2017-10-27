@@ -3,7 +3,7 @@
 // Grid layout:
 .container {
     display: block;
-	width: 100%;
+    width: 100%;
     max-width: $screen-l-min;
     padding-left: 0.3em;
     padding-right: 0.3em;
@@ -103,11 +103,17 @@
                 &.reverse {
                     flex-direction: column-reverse;
                 }
+                &>* {
+                    width: 100%;
+                }
             }
             &.flex-#{$name}-direction-row {
                 flex-direction: row;
                 &.reverse {
                     flex-direction: row-reverse;
+                }
+                &>* {
+                    width: 100%;
                 }
             }
         }
@@ -127,6 +133,14 @@
 
 .width-100 {
     width: 100%;
+}
+
+.height-auto {
+    height: auto;
+}
+
+.width-auto {
+    width: auto;
 }
 
 /////////////////////////////////////////////////////////

@@ -10,7 +10,8 @@ $screen-s-min: 375px;
 $screen-m-min: 768px;
 $screen-l-min: 1024px;
 $screen-xl-min: 1440px;
-$screen-sizes: ("xs": $screen-xs-min, "s": $screen-s-min, "m": $screen-m-min, "l": $screen-l-min, "xl": $screen-xl-min);
+// Sizes as an array:
+$screen-sizes: ("xs": 0px, "s": $screen-s-min, "m": $screen-m-min, "l": $screen-l-min, "xl": $screen-xl-min);
 /////////////////////////////////////////////////////
 // Colors:
 // Fonts 
@@ -24,7 +25,7 @@ $link-underline: rgb(150, 150, 150);
 $bg-primary: rgb(255, 255, 255);
 $bg-secondary: rgb(230, 230, 230);
 // Info, Succes, Warning, Danger, Default - buttons, alerts, inputs
-$forms-font-size: 0.75em;
+$forms-font-size: 0.8em;
 $color-default: rgb(10, 10, 10);
 $color-info: rgb(0, 100, 255);
 $color-succes: rgb(20, 180, 95);

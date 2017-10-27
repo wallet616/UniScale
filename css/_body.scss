@@ -1,7 +1,9 @@
 @import "./_variables.scss";
 /////////////////////////////////////////////////////
-// Default page values:
+// Font:
 @import url("https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i&subset=latin-ext");
+/////////////////////////////////////////////////////
+// Default page values:
 * {
     box-sizing: border-box;
     vertical-align: top;
@@ -28,7 +30,7 @@ body {
     // Text values
     font-family: "Lato", sans-serif;
     color: $font-primary;
-    font-size: 19px;
+    font-size: 18px;
 }
 
 /////////////////////////////////////////////////////////
@@ -89,19 +91,35 @@ b {
 
 /////////////////////////////////////////////////////
 // Text align:
+.text-center {
+    text-align: center;
+}
+
+.text-left {
+    text-align: left;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.text-justify {
+    text-align: justify;
+}
+
 @each $name,
 $size in $screen-sizes {
     @media screen and (min-width: #{$size}) {
-        .text-#{$name}-center {
+        .text-center-#{$name} {
             text-align: center;
         }
-        .text-#{$name}-left {
+        .text-left-#{$name} {
             text-align: left;
         }
-        .text-#{$name}-right {
+        .text-right-#{$name} {
             text-align: right;
         }
-        .text-#{$name}-justify {
+        .text-justify-#{$name} {
             text-align: justify;
         }
     }
